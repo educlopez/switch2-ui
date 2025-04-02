@@ -1,46 +1,55 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Sun } from "lucide-react"
+import { useState, useEffect } from "react";
+import { Sun } from "lucide-react";
 
 export default function SystemSettings() {
-  const [hdrEnabled, setHdrEnabled] = useState(true)
-  const [showResolutionDropdown, setShowResolutionDropdown] = useState(true)
-  const [selectedResolution, setSelectedResolution] = useState("Automatic")
+  const [hdrEnabled, setHdrEnabled] = useState(true);
+  const [showResolutionDropdown, setShowResolutionDropdown] = useState(true);
+  const [selectedResolution, setSelectedResolution] = useState("Automatic");
 
-  const resolutions = ["Automatic", "720p (HD)", "1080p (Full HD)", "1440p (WQHD)", "2160p (4K)"]
+  const resolutions = [
+    "Automatic",
+    "720p (HD)",
+    "1080p (Full HD)",
+    "1440p (WQHD)",
+    "2160p (4K)",
+  ];
 
   const toggleHDR = () => {
-    setHdrEnabled(!hdrEnabled)
-  }
+    setHdrEnabled(!hdrEnabled);
+  };
 
   const toggleResolutionDropdown = () => {
-    setShowResolutionDropdown(!showResolutionDropdown)
-  }
+    setShowResolutionDropdown(!showResolutionDropdown);
+  };
 
   const selectResolution = (resolution: string) => {
-    setSelectedResolution(resolution)
-  }
+    setSelectedResolution(resolution);
+  };
 
   // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!showResolutionDropdown) return
+      if (!showResolutionDropdown) return;
 
-      const currentIndex = resolutions.indexOf(selectedResolution)
+      const currentIndex = resolutions.indexOf(selectedResolution);
 
       if (e.key === "ArrowUp" && currentIndex > 0) {
-        setSelectedResolution(resolutions[currentIndex - 1])
-      } else if (e.key === "ArrowDown" && currentIndex < resolutions.length - 1) {
-        setSelectedResolution(resolutions[currentIndex + 1])
+        setSelectedResolution(resolutions[currentIndex - 1]);
+      } else if (
+        e.key === "ArrowDown" &&
+        currentIndex < resolutions.length - 1
+      ) {
+        setSelectedResolution(resolutions[currentIndex + 1]);
       } else if (e.key === "Escape") {
-        setShowResolutionDropdown(false)
+        setShowResolutionDropdown(false);
       }
-    }
+    };
 
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [selectedResolution, resolutions, showResolutionDropdown])
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedResolution, resolutions, showResolutionDropdown]);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-700 font-sans">
@@ -49,7 +58,9 @@ export default function SystemSettings() {
         <div className="pt-6 px-6 pb-2">
           <div className="flex items-center">
             <Sun className="h-6 w-6 mr-3 text-gray-600" />
-            <h1 className="text-2xl font-normal text-gray-600">System Settings</h1>
+            <h1 className="text-2xl font-normal text-gray-600">
+              System Settings
+            </h1>
           </div>
         </div>
 
@@ -58,16 +69,28 @@ export default function SystemSettings() {
         <div className="flex">
           {/* Left sidebar */}
           <div className="w-[200px]">
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">Controllers & Accessories</div>
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">Audio</div>
+            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+              Controllers & Accessories
+            </div>
+            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+              Audio
+            </div>
             <div className="py-4 px-6 border-b border-gray-200 text-blue-500 relative">
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500"></div>
               Display
             </div>
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">Mii</div>
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">amiibo</div>
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">Themes</div>
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">Notifications</div>
+            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+              Mii
+            </div>
+            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+              amiibo
+            </div>
+            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+              Themes
+            </div>
+            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+              Notifications
+            </div>
           </div>
 
           {/* Main content */}
@@ -84,14 +107,20 @@ export default function SystemSettings() {
                   <span className="text-lg">HDR Output</span>
                   <button
                     onClick={toggleHDR}
-                    className={`w-14 h-7 rounded-full ${hdrEnabled ? "bg-blue-500" : "bg-gray-300"} p-1 flex items-center transition-colors duration-200`}
+                    className={`w-14 h-7 rounded-full ${
+                      hdrEnabled ? "bg-blue-500" : "bg-gray-300"
+                    } p-1 flex items-center transition-colors duration-200`}
                   >
                     <div
-                      className={`bg-white w-5 h-5 rounded-full shadow-md transform transition-transform duration-200 ${hdrEnabled ? "translate-x-7" : "translate-x-0"}`}
+                      className={`bg-white w-5 h-5 rounded-full shadow-md transform transition-transform duration-200 ${
+                        hdrEnabled ? "translate-x-7" : "translate-x-0"
+                      }`}
                     ></div>
                   </button>
                 </div>
-                <p className="text-gray-500 text-sm">Turns on HDR output in supporting software</p>
+                <p className="text-gray-500 text-sm">
+                  Turns on HDR output in supporting software
+                </p>
               </div>
             </div>
 
@@ -104,19 +133,24 @@ export default function SystemSettings() {
 
               {/* TV Resolution */}
               <div className="py-4 border-b border-gray-200 relative">
-                <div className="flex justify-between items-center cursor-pointer" onClick={toggleResolutionDropdown}>
+                <div
+                  className="flex justify-between items-center cursor-pointer"
+                  onClick={toggleResolutionDropdown}
+                >
                   <span className="text-lg">TV Resolution</span>
                   <span className="text-gray-500">{selectedResolution}</span>
                 </div>
 
                 {/* Resolution dropdown */}
                 {showResolutionDropdown && (
-                  <div className="absolute right-0 top-0 mt-[-80px] bg-white rounded-lg shadow-lg w-[350px] z-10 overflow-hidden">
+                  <div className="absolute right-0 top-0 mt-[-80px] bg-white rounded-xl p-3 shadow-lg w-[350px] z-10 overflow-hidden">
                     {resolutions.map((resolution) => (
                       <div
                         key={resolution}
                         className={`relative p-4 flex justify-between items-center cursor-pointer ${
-                          resolution === selectedResolution ? "text-blue-500" : "text-gray-700"
+                          resolution === selectedResolution
+                            ? "text-blue-500"
+                            : "text-gray-700"
                         }`}
                         onClick={() => selectResolution(resolution)}
                       >
@@ -128,12 +162,14 @@ export default function SystemSettings() {
                               : "border-2 border-gray-300"
                           }`}
                         >
-                          {resolution === selectedResolution && <div className="w-2 h-2 bg-white rounded-full"></div>}
+                          {resolution === selectedResolution && (
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                          )}
                         </div>
 
                         {/* Animated gradient border for selected option */}
                         {resolution === selectedResolution && (
-                          <div className="absolute inset-0 -z-10 gradient-border"></div>
+                          <div className="absolute -z-10 gradient-border w-full rounded-xl overflow-hidden"></div>
                         )}
                       </div>
                     ))}
@@ -170,7 +206,11 @@ export default function SystemSettings() {
           <div className="flex items-center">
             <div className="flex">
               <div className="w-3 h-6 bg-green-500 mr-1"></div>
-              <img src="/placeholder.svg?height=30&width=60" alt="Joy-Con" className="h-6" />
+              <img
+                src="/placeholder.svg?height=30&width=60"
+                alt="Joy-Con"
+                className="h-6"
+              />
             </div>
           </div>
           <div className="flex items-center">
@@ -190,6 +230,5 @@ export default function SystemSettings() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
