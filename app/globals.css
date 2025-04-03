@@ -141,7 +141,19 @@
     }
   }
 }
-
+@utility gradient-bg {
+  background: conic-gradient(
+      from var(--angle),
+      #448af9 0%,
+      #e0b8ff 20%,
+      #fddae8 40%,
+      #0378eb 60%,
+      #ade4ed 80%,
+      #448af9 100%
+    )
+    border-box;
+  animation: rotate 4s linear infinite;
+}
 @utility gradient-border {
   background:
     linear-gradient(var(--color-primary), var(--color-primary)) padding-box,

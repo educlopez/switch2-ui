@@ -160,15 +160,20 @@ export default function HomePage() {
               className="flex gap-4 pb-4"
               style={{ width: "calc(100% + 25%)" }}
             >
-              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none overflow-hidden rounded-xl border-2 border-white shadow-md [box-shadow:inset_0px_-1px_1px_rgba(13,34,71,0.12)]">
+              <div
+                className="group shadow-m relative aspect-square w-[calc(20%-12px)] flex-none rounded-xl"
+                onMouseEnter={() => setHoveredIcon("game1")}
+                onMouseLeave={() => setHoveredIcon(null)}
+              >
                 <Image
                   src={gameCover.src}
                   alt="Zelda game"
                   width={388}
                   height={388}
-                  className="h-full w-full object-cover select-none"
+                  className="absolute z-2 h-full w-full rounded-xl object-cover p-0.5 transition-all select-none hover:p-1"
                   draggable="false"
                 />
+                <div className="group-hover:gradient-bg absolute inset-0 top-1/2 left-1/2 z-1 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white"></div>
               </div>
               <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
               <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
