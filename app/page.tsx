@@ -114,14 +114,22 @@ export default function HomePage() {
       <div className="absolute top-0 left-0 flex w-full items-center justify-between p-4">
         <div className="flex items-center">
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Avatar className="h-14 w-14 cursor-pointer border-2 border-white">
+            <DropdownMenuTrigger className="relative rounded-full">
+              <Avatar
+                className="h-14 w-14 cursor-pointer border-2 border-white"
+                onMouseEnter={() => setHoveredIcon("avatar")}
+                onMouseLeave={() => setHoveredIcon(null)}
+              >
                 <AvatarImage
                   src="https://avatars.githubusercontent.com/u/13372238?v=4"
                   alt="@educalvolpz"
+                  className="z-10"
                 />
                 <AvatarFallback>EC</AvatarFallback>
               </Avatar>
+              {hoveredIcon === "avatar" && (
+                <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-15 w-15 -translate-x-1/2 -translate-y-1/2 rounded-full border-3"></div>
+              )}
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-primary w-56">
               <DropdownMenuLabel>Links</DropdownMenuLabel>
