@@ -54,10 +54,10 @@ export default function SystemSettings() {
   }, [selectedResolution, resolutions, showResolutionDropdown])
 
   return (
-    <div className="min-h-screen bg-neutral-100 font-sans text-gray-800">
+    <>
       <div className="">
         {/* Header */}
-        <div className="sticky left-0 top-0 z-10 h-16 w-full border-b border-gray-200 bg-gray-100 px-6 pb-2 pt-6">
+        <div className="sticky left-0 top-0 z-10 h-16 w-full border-b bg-neutral-200/80 px-6 pb-2 pt-6">
           <div className="flex items-center">
             <Settings className="mr-3 h-6 w-6 text-gray-600" />
             <h1 className="text-2xl font-normal text-gray-600">
@@ -69,40 +69,32 @@ export default function SystemSettings() {
         <div className="flex">
           {/* Left sidebar */}
           <div className="w-[200px]">
-            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
+            <div className="border-b px-6 py-4 text-gray-500">
               Controllers & Accessories
             </div>
-            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
-              Audio
-            </div>
-            <div className="relative border-b border-gray-200 px-6 py-4 text-blue-500">
+            <div className="border-b px-6 py-4 text-gray-500">Audio</div>
+            <div className="relative border-b px-6 py-4 text-blue-500">
               <div className="absolute bottom-0 left-0 top-0 w-1 bg-blue-500"></div>
               Display
             </div>
-            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
-              Mii
-            </div>
-            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
-              amiibo
-            </div>
-            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
-              Themes
-            </div>
-            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
+            <div className="border-b px-6 py-4 text-gray-500">Mii</div>
+            <div className="border-b px-6 py-4 text-gray-500">amiibo</div>
+            <div className="border-b px-6 py-4 text-gray-500">Themes</div>
+            <div className="border-b px-6 py-4 text-gray-500">
               Notifications
             </div>
           </div>
 
           {/* Main content */}
-          <div className="flex-1 border-l border-gray-200 pl-6 pr-6">
+          <div className="flex-1 border-l pl-6 pr-6">
             {/* System Screen section */}
             <div className="mb-6">
-              <h2 className="relative border-b border-gray-200 py-3 pl-4 text-lg font-normal">
+              <h2 className="relative border-b py-3 pl-4 text-lg font-normal">
                 <div className="absolute bottom-3 left-0 top-3 w-1 bg-gray-800"></div>
                 System Screen
               </h2>
 
-              <div className="border-b border-gray-200 py-4">
+              <div className="border-b py-4">
                 <div className="mb-2 flex items-center justify-between">
                   <span className="text-lg">HDR Output</span>
                   <button
@@ -126,13 +118,13 @@ export default function SystemSettings() {
 
             {/* TV section */}
             <div className="mb-6">
-              <h2 className="relative border-b border-gray-200 py-3 pl-4 text-lg font-normal">
+              <h2 className="relative border-b py-3 pl-4 text-lg font-normal">
                 <div className="absolute bottom-3 left-0 top-3 w-1 bg-gray-800"></div>
                 TV
               </h2>
 
               {/* TV Resolution */}
-              <div className="relative border-b border-gray-200 py-4">
+              <div className="relative border-b py-4">
                 <div
                   className="flex cursor-pointer items-center justify-between"
                   onClick={toggleResolutionDropdown}
@@ -178,14 +170,14 @@ export default function SystemSettings() {
               </div>
 
               {/* Dock Output Information */}
-              <div className="border-b border-gray-200 py-4">
+              <div className="border-b py-4">
                 <div className="flex items-center justify-between">
                   <span className="text-lg">Dock Output Information</span>
                 </div>
               </div>
 
               {/* RGB Range */}
-              <div className="border-b border-gray-200 py-4">
+              <div className="border-b py-4">
                 <div className="flex items-center justify-between">
                   <span className="text-lg">RGB Range</span>
                 </div>
@@ -229,6 +221,6 @@ export default function SystemSettings() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

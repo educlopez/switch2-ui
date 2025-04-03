@@ -11,7 +11,7 @@ export default function SettingsRedirect() {
   }, [router])
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+    <div className="flex min-h-screen items-center justify-center">
       <div className="text-gray-600">Loading system settings...</div>
     </div>
   )

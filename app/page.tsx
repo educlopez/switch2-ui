@@ -95,7 +95,7 @@ export default function HomePage() {
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null)
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-neutral-100 font-sans text-gray-800">
+    <>
       {/* Status Bar */}
       <div className="absolute left-0 top-0 flex w-full items-center justify-between p-4">
         <div className="flex items-center">
@@ -398,6 +398,6 @@ export default function HomePage() {
           <span className="ml-1 text-sm text-gray-600">OK</span>
         </div>
       </div>
-    </div>
+    </>
   )
 }
