@@ -1,24 +1,39 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Image from "next/image";
-import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { BatteryMedium, Cable, FileText, Gamepad2, ImageIcon, MessageCircleMore, Plus, Power, Settings, ShoppingBag, Smartphone, Wifi } from "lucide-react";
+import { useState } from "react"
+import Image from "next/image"
+import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
+import {
+  BatteryMedium,
+  Cable,
+  FileText,
+  Gamepad2,
+  ImageIcon,
+  MessageCircleMore,
+  Plus,
+  Power,
+  Settings,
+  ShoppingBag,
+  Smartphone,
+  Wifi,
+} from "lucide-react"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu"
+import switchOnline from "@/app/assets/switchonline.avif"
 
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
-import switchOnline from "@/app/assets/switchonline.avif";
-
-
-
-import { Clock } from "./components/Clock";
-import { ControlButton } from "./components/ControlButton";
-import { GameGrid } from "./components/GameGrid";
-import { JoyconIndicator } from "./components/JoyconIndicator";
-import { MenuIcon } from "./components/MenuIcon";
-
+import { Clock } from "./components/Clock"
+import { ControlButton } from "./components/ControlButton"
+import { GameGrid } from "./components/GameGrid"
+import { JoyconIndicator } from "./components/JoyconIndicator"
+import { MenuIcon } from "./components/MenuIcon"
 
 export default function HomePage() {
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null)
@@ -84,7 +99,7 @@ export default function HomePage() {
       id: "settings",
       icon: Settings,
       label: "System Settings",
-      href: "/settings",
+      href: "/settings/display",
     },
     {
       id: "power",

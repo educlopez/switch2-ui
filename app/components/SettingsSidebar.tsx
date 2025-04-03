@@ -11,7 +11,7 @@ export function SettingsSidebar({ activePath }: SettingsSidebarProps) {
     { label: "Internet", path: "" },
     { label: "Controllers & Accessories", path: "" },
     { label: "Parental Controls", path: "" },
-    { label: "Display", path: "/settings" },
+    { label: "Display", path: "/settings/display" },
     { label: "Mii", path: "" },
     { label: "amiibo", path: "" },
     { label: "Themes", path: "" },

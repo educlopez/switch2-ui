@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Settings } from "lucide-react"
 
 import { ControlButton } from "../components/ControlButton"
@@ -10,15 +11,10 @@ import { SettingsSidebar } from "../components/SettingsSidebar"
 
 interface SettingsLayoutProps {
   children: React.ReactNode
-  params: { path?: string[] }
 }
 
-export default function SettingsLayout({
-  children,
-  params,
-}: SettingsLayoutProps) {
-  // Construct the current path for active sidebar item
-  const path = params.path ? `/settings/${params.path.join("/")}` : "/settings"
+export default function SettingsLayout({ children }: SettingsLayoutProps) {
+  const pathname = usePathname()
 
   return (
     <div className="min-h-screen">
@@ -27,7 +23,7 @@ export default function SettingsLayout({
 
       <div className="flex">
         {/* Sidebar */}
-        <SettingsSidebar activePath={path} />
+        <SettingsSidebar activePath={pathname} />
 
         {/* Main Content */}
         <div className="flex-1 border-l pr-6 pl-6">{children}</div>

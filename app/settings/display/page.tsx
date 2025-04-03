@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import { ToggleSwitch } from "../components/ToggleSwitch"
+import { ToggleSwitch } from "../../components/ToggleSwitch"
 
 export default function SystemSettings() {
   const [hdrEnabled, setHdrEnabled] = useState(true)
