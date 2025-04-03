@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -26,6 +26,34 @@ export default function HomePage() {
       ampm: now.getHours() >= 12 ? "PM" : "AM",
     };
   });
+
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const gameGridRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseDown = (e: MouseEvent) => {
+    if (!gameGridRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - gameGridRef.current.offsetLeft);
+    setScrollLeft(gameGridRef.current.scrollLeft);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isDragging || !gameGridRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - gameGridRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    gameGridRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
 
   // Update time every minute
   useState(() => {
@@ -74,7 +102,14 @@ export default function HomePage() {
       {/* Game Grid */}
       <div className="flex flex-col justify-center items-center gap-4 h-screen">
         <div className="px-4 mt-4">
-          <div className="overflow-x-auto hide-scrollbar">
+          <div
+            ref={gameGridRef}
+            className="overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing"
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
             <div
               className="flex gap-4 pb-4"
               style={{ width: "calc(100% + 25%)" }}
@@ -320,7 +355,7 @@ export default function HomePage() {
         </div>
       </div>
       {/* Controller Indicators */}
-      <div className="absolute bottom-4 left-4 flex items-center">
+      <div className="fixed bottom-4 left-4 flex items-center">
         <div className="flex">
           <div className="w-2 h-6 bg-gray-400 mr-1"></div>
           <div className="w-6 h-6 rounded-sm bg-gray-400"></div>

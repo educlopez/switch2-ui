@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { Sun } from "lucide-react";
+import Link from "next/link";
 
 export default function SystemSettings() {
   const [hdrEnabled, setHdrEnabled] = useState(true);
-  const [showResolutionDropdown, setShowResolutionDropdown] = useState(true);
+  const [showResolutionDropdown, setShowResolutionDropdown] = useState(false);
   const [selectedResolution, setSelectedResolution] = useState("Automatic");
 
   const resolutions = [
@@ -26,6 +27,7 @@ export default function SystemSettings() {
 
   const selectResolution = (resolution: string) => {
     setSelectedResolution(resolution);
+    setShowResolutionDropdown(false);
   };
 
   // Handle keyboard navigation
@@ -52,10 +54,10 @@ export default function SystemSettings() {
   }, [selectedResolution, resolutions, showResolutionDropdown]);
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-700 font-sans">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen bg-gray-100 text-gray-800 font-sans">
+      <div className="">
         {/* Header */}
-        <div className="pt-6 px-6 pb-2">
+        <div className="sticky top-0 left-0 w-full bg-gray-100 pt-6 px-6 pb-2 z-10 border-b border-gray-200 h-16">
           <div className="flex items-center">
             <Sun className="h-6 w-6 mr-3 text-gray-600" />
             <h1 className="text-2xl font-normal text-gray-600">
@@ -63,8 +65,6 @@ export default function SystemSettings() {
             </h1>
           </div>
         </div>
-
-        <hr className="border-gray-200" />
 
         <div className="flex">
           {/* Left sidebar */}
@@ -169,7 +169,7 @@ export default function SystemSettings() {
 
                         {/* Animated gradient border for selected option */}
                         {resolution === selectedResolution && (
-                          <div className="absolute -z-10 gradient-border w-full rounded-xl overflow-hidden"></div>
+                          <div className="absolute -z-10 gradient-border border-4 w-full rounded-xl overflow-hidden"></div>
                         )}
                       </div>
                     ))}
@@ -202,7 +202,7 @@ export default function SystemSettings() {
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between p-4 mt-4">
+        <div className="fixed bottom-0 left-0 w-full flex justify-between p-4 mt-4">
           <div className="flex items-center">
             <div className="flex">
               <div className="w-3 h-6 bg-green-500 mr-1"></div>
@@ -214,12 +214,12 @@ export default function SystemSettings() {
             </div>
           </div>
           <div className="flex items-center">
-            <div className="mr-4 flex items-center">
+            <Link href="/" className="mr-4 flex items-center">
               <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs mr-1">
                 B
               </div>
               <span className="text-gray-600">Back</span>
-            </div>
+            </Link>
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs mr-1">
                 A
