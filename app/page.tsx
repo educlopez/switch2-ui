@@ -101,7 +101,7 @@ export default function HomePage() {
         <div className="flex items-center">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Avatar className="h-14 w-14 border-2 border-white">
+              <Avatar className="h-14 w-14 cursor-pointer border-2 border-white">
                 <AvatarImage
                   src="https://avatars.githubusercontent.com/u/13372238?v=4"
                   alt="@educalvolpz"
@@ -109,17 +109,28 @@ export default function HomePage() {
                 <AvatarFallback>EC</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
+            <DropdownMenuContent className="bg-primary w-56">
+              <DropdownMenuLabel>Links</DropdownMenuLabel>
+              <DropdownMenuSeparator className="bg-border" />
               <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
                   <a
                     href="https://github.com/educlopez/switch2-ui"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
+                    className="hover:bg-background cursor-pointer"
                   >
                     Github
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a
+                    href="https://x.com/educalvolpz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:bg-background cursor-pointer"
+                  >
+                    X.com
                   </a>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
