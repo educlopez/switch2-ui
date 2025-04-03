@@ -34,6 +34,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import gameCover from "@/app/assets/game-cover.jpg"
+import gameCover2 from "@/app/assets/game-cover2.jpg"
 import switchOnline from "@/app/assets/switchonline.avif"
 
 export default function HomePage() {
@@ -175,7 +176,21 @@ export default function HomePage() {
                 />
                 <div className="group-hover:gradient-bg absolute inset-0 top-1/2 left-1/2 z-1 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white"></div>
               </div>
-              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
+              <div
+                className="group shadow-m relative aspect-square w-[calc(20%-12px)] flex-none rounded-xl"
+                onMouseEnter={() => setHoveredIcon("game1")}
+                onMouseLeave={() => setHoveredIcon(null)}
+              >
+                <Image
+                  src={gameCover2.src}
+                  alt="Zelda game"
+                  width={388}
+                  height={388}
+                  className="absolute z-2 h-full w-full rounded-xl object-cover p-0.5 transition-all select-none hover:p-1"
+                  draggable="false"
+                />
+                <div className="group-hover:gradient-bg absolute inset-0 top-1/2 left-1/2 z-1 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white"></div>
+              </div>
               <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
               <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
               <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
