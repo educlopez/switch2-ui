@@ -97,7 +97,7 @@ export default function HomePage() {
   return (
     <>
       {/* Status Bar */}
-      <div className="absolute left-0 top-0 flex w-full items-center justify-between p-4">
+      <div className="absolute top-0 left-0 flex w-full items-center justify-between p-4">
         <div className="flex items-center">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -121,18 +121,16 @@ export default function HomePage() {
                   >
                     Github
                   </a>
-                  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium">{formattedTime}</span>
-          <div className="flex items-center gap-1">
-            <Wifi size={24} />
-            <BatteryMedium className="fill-green-500" size={24} />
-          </div>
+        <div className="flex items-center gap-4">
+          <span className="text-foreground font-medium">{formattedTime}</span>
+
+          <Wifi className="stroke-foreground h-7 w-auto" />
+          <BatteryMedium className="stroke-foreground h-8 w-auto fill-green-500" />
         </div>
       </div>
 
@@ -154,7 +152,7 @@ export default function HomePage() {
               <div className="aspect-square w-[calc(20%-12px)] flex-none overflow-hidden rounded-xl border-2 border-gray-200/30 bg-white shadow-md">
                 <Image
                   src={gameCover.src}
-                  alt="Mario Kart 8 Deluxe"
+                  alt="Zelda game"
                   width={388}
                   height={388}
                   className="h-full w-full object-cover"
@@ -171,7 +169,7 @@ export default function HomePage() {
         </div>
         {/* Bottom Navigation */}
 
-        <div className="relative flex items-center justify-center gap-4 rounded-full bg-white/50 p-4">
+        <div className="bg-primary relative flex items-center justify-center gap-4 rounded-full p-4">
           {/* Home Button */}
           <div
             className="relative"
@@ -190,12 +188,12 @@ export default function HomePage() {
               />
             </Link>
             {hoveredIcon === "home" && (
-              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Home
               </div>
             )}
             {hoveredIcon === "home" && (
-              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -209,12 +207,12 @@ export default function HomePage() {
               <MessageCircleMore size={24} />
             </button>
             {hoveredIcon === "album" && (
-              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Chat
               </div>
             )}
             {hoveredIcon === "album" && (
-              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -228,12 +226,12 @@ export default function HomePage() {
               <FileText size={24} />
             </button>
             {hoveredIcon === "news" && (
-              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 News
               </div>
             )}
             {hoveredIcon === "news" && (
-              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -250,12 +248,12 @@ export default function HomePage() {
               <ShoppingBag size={24} />
             </Link>
             {hoveredIcon === "eshop" && (
-              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Nintendo eShop
               </div>
             )}
             {hoveredIcon === "eshop" && (
-              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -269,12 +267,12 @@ export default function HomePage() {
               <ImageIcon size={24} />
             </button>
             {hoveredIcon === "screenshots" && (
-              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Screenshots
               </div>
             )}
             {hoveredIcon === "screenshots" && (
-              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -288,12 +286,12 @@ export default function HomePage() {
               <Cable size={24} />
             </button>
             {hoveredIcon === "controllers" && (
-              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Connections
               </div>
             )}
             {hoveredIcon === "controllers" && (
-              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -303,16 +301,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("online")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-500">
-              <Gamepad2 size={24} />
+            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
+              <Gamepad2 size={24} className="stroke-primary-foreground" />
             </button>
             {hoveredIcon === "online" && (
-              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Controllers
               </div>
             )}
             {hoveredIcon === "online" && (
-              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -322,16 +320,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("parental")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-500">
-              <Smartphone size={24} />
+            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
+              <Smartphone size={24} className="stroke-primary-foreground" />
             </button>
             {hoveredIcon === "parental" && (
-              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Cartridges
               </div>
             )}
             {hoveredIcon === "parental" && (
-              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -343,17 +341,17 @@ export default function HomePage() {
           >
             <Link
               href="/settings"
-              className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-500"
+              className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full"
             >
-              <Settings size={24} />
+              <Settings size={24} className="stroke-primary-foreground" />
             </Link>
             {hoveredIcon === "settings" && (
-              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 System Settings
               </div>
             )}
             {hoveredIcon === "settings" && (
-              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -363,16 +361,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("power")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-500">
-              <Power size={24} />
+            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
+              <Power size={24} className="stroke-primary-foreground" />
             </button>
             {hoveredIcon === "power" && (
-              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Sleep Mode
               </div>
             )}
             {hoveredIcon === "power" && (
-              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
         </div>
@@ -384,18 +382,18 @@ export default function HomePage() {
           <div className="h-6 w-6 rounded-sm bg-gray-400"></div>
         </div>
       </div>
-      <div className="absolute bottom-4 right-4 flex items-center gap-2">
+      <div className="absolute right-4 bottom-4 flex items-center gap-2">
         <div className="flex items-center">
-          <div className="mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 text-xs text-white">
+          <div className="bg-foreground mr-1 flex h-6 w-6 items-center justify-center rounded-full text-xs text-white">
             <Plus size={16} />
           </div>
-          <span className="ml-1 text-sm text-gray-600">Options</span>
+          <span className="text-foreground ml-1 text-sm">Options</span>
         </div>
         <div className="flex items-center">
-          <div className="mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 text-xs text-white">
+          <div className="bg-foreground mr-1 flex h-6 w-6 items-center justify-center rounded-full text-xs text-white">
             A
           </div>
-          <span className="ml-1 text-sm text-gray-600">OK</span>
+          <span className="text-foreground ml-1 text-sm">OK</span>
         </div>
       </div>
     </>

@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="relative min-h-screen overflow-hidden bg-neutral-200/80 font-sans text-gray-800">
+      <body className="bg-background text-foreground relative min-h-screen overflow-hidden font-sans">
         {children}
       </body>
     </html>

@@ -57,10 +57,10 @@ export default function SystemSettings() {
     <>
       <div className="">
         {/* Header */}
-        <div className="sticky left-0 top-0 z-10 h-16 w-full border-b bg-neutral-200/80 px-6 pb-2 pt-6">
+        <div className="sticky top-0 left-0 z-10 h-16 w-full border-b bg-neutral-200/80 px-6 pt-6 pb-2">
           <div className="flex items-center">
-            <Settings className="mr-3 h-6 w-6 text-gray-600" />
-            <h1 className="text-2xl font-normal text-gray-600">
+            <Settings className="text-foreground mr-3 h-6 w-6" />
+            <h1 className="text-foreground text-2xl font-normal">
               System Settings
             </h1>
           </div>
@@ -69,28 +69,28 @@ export default function SystemSettings() {
         <div className="flex">
           {/* Left sidebar */}
           <div className="w-[200px]">
-            <div className="border-b px-6 py-4 text-gray-500">
+            <div className="text-foreground border-b px-6 py-4">
               Controllers & Accessories
             </div>
-            <div className="border-b px-6 py-4 text-gray-500">Audio</div>
+            <div className="text-foreground border-b px-6 py-4">Audio</div>
             <div className="relative border-b px-6 py-4 text-blue-500">
-              <div className="absolute bottom-0 left-0 top-0 w-1 bg-blue-500"></div>
+              <div className="absolute top-0 bottom-0 left-0 w-1 bg-blue-500"></div>
               Display
             </div>
-            <div className="border-b px-6 py-4 text-gray-500">Mii</div>
-            <div className="border-b px-6 py-4 text-gray-500">amiibo</div>
-            <div className="border-b px-6 py-4 text-gray-500">Themes</div>
-            <div className="border-b px-6 py-4 text-gray-500">
+            <div className="text-foreground border-b px-6 py-4">Mii</div>
+            <div className="text-foreground border-b px-6 py-4">amiibo</div>
+            <div className="text-foreground border-b px-6 py-4">Themes</div>
+            <div className="text-foreground border-b px-6 py-4">
               Notifications
             </div>
           </div>
 
           {/* Main content */}
-          <div className="flex-1 border-l pl-6 pr-6">
+          <div className="flex-1 border-l pr-6 pl-6">
             {/* System Screen section */}
             <div className="mb-6">
               <h2 className="relative border-b py-3 pl-4 text-lg font-normal">
-                <div className="absolute bottom-3 left-0 top-3 w-1 bg-gray-800"></div>
+                <div className="absolute top-3 bottom-3 left-0 w-1 bg-gray-800"></div>
                 System Screen
               </h2>
 
@@ -110,7 +110,7 @@ export default function SystemSettings() {
                     ></div>
                   </button>
                 </div>
-                <p className="text-sm text-gray-500">
+                <p className="text-secondary-foreground text-sm">
                   Turns on HDR output in supporting software
                 </p>
               </div>
@@ -119,7 +119,7 @@ export default function SystemSettings() {
             {/* TV section */}
             <div className="mb-6">
               <h2 className="relative border-b py-3 pl-4 text-lg font-normal">
-                <div className="absolute bottom-3 left-0 top-3 w-1 bg-gray-800"></div>
+                <div className="absolute top-3 bottom-3 left-0 w-1 bg-gray-800"></div>
                 TV
               </h2>
 
@@ -130,12 +130,12 @@ export default function SystemSettings() {
                   onClick={toggleResolutionDropdown}
                 >
                   <span className="text-lg">TV Resolution</span>
-                  <span className="text-gray-500">{selectedResolution}</span>
+                  <span className="text-foreground">{selectedResolution}</span>
                 </div>
 
                 {/* Resolution dropdown */}
                 {showResolutionDropdown && (
-                  <div className="absolute right-0 top-0 z-10 mt-[-80px] w-[350px] overflow-hidden rounded-xl bg-white p-3 shadow-lg">
+                  <div className="bg-primary absolute top-0 right-0 z-10 mt-[-80px] w-[350px] overflow-hidden rounded-xl p-3 shadow-lg">
                     {resolutions.map((resolution) => (
                       <div
                         key={resolution}
