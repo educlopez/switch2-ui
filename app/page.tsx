@@ -168,7 +168,7 @@ export default function HomePage() {
               >
                 <Image
                   src={gameCover.src}
-                  alt="Zelda game"
+                  alt="Mario game"
                   width={388}
                   height={388}
                   className="absolute z-2 h-full w-full rounded-xl object-cover p-0.5 transition-all select-none hover:p-1"
@@ -183,7 +183,7 @@ export default function HomePage() {
               >
                 <Image
                   src={gameCover2.src}
-                  alt="Zelda game"
+                  alt="Donkey Kong game"
                   width={388}
                   height={388}
                   className="absolute z-2 h-full w-full rounded-xl object-cover p-0.5 transition-all select-none hover:p-1"
@@ -201,7 +201,7 @@ export default function HomePage() {
         </div>
         {/* Bottom Navigation */}
 
-        <div className="bg-primary relative flex items-center justify-center gap-4 rounded-full p-4">
+        <div className="bg-primary relative flex items-center justify-center gap-10 rounded-full py-4 pr-8 pl-4">
           {/* Home Button */}
           <div
             className="relative"
@@ -210,23 +210,23 @@ export default function HomePage() {
           >
             <Link
               href="/"
-              className="relative z-10 flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-red-500 text-white"
+              className="relative z-10 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full bg-red-500 text-white"
             >
               <Image
                 src={switchOnline.src}
                 alt="Logo Switch Online"
-                width={40}
-                height={40}
+                width={65}
+                height={65}
                 draggable="false"
               />
             </Link>
             {hoveredIcon === "home" && (
-              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-14 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Home
               </div>
             )}
             {hoveredIcon === "home" && (
-              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -236,16 +236,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("album")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-orange-500">
-              <MessageCircleMore size={24} />
+            <button className="relative z-10 flex items-center justify-center rounded-full text-orange-500">
+              <MessageCircleMore className="h-9 w-9" />
             </button>
             {hoveredIcon === "album" && (
-              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-18 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Chat
               </div>
             )}
             {hoveredIcon === "album" && (
-              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -255,16 +255,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("news")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-green-500">
-              <FileText size={24} />
+            <button className="relative z-10 flex items-center justify-center rounded-full text-green-500">
+              <FileText className="h-9 w-9" />
             </button>
             {hoveredIcon === "news" && (
-              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-18 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 News
               </div>
             )}
             {hoveredIcon === "news" && (
-              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -276,17 +276,17 @@ export default function HomePage() {
           >
             <Link
               href="/settings"
-              className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-red-500"
+              className="relative z-10 flex items-center justify-center rounded-full text-red-500"
             >
-              <ShoppingBag size={24} />
+              <ShoppingBag className="h-9 w-9" />
             </Link>
             {hoveredIcon === "eshop" && (
-              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-18 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Nintendo eShop
               </div>
             )}
             {hoveredIcon === "eshop" && (
-              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -296,16 +296,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("screenshots")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-blue-500">
-              <ImageIcon size={24} />
+            <button className="relative z-10 flex items-center justify-center rounded-full text-blue-500">
+              <ImageIcon className="h-9 w-9" />
             </button>
             {hoveredIcon === "screenshots" && (
-              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-18 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Screenshots
               </div>
             )}
             {hoveredIcon === "screenshots" && (
-              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -315,16 +315,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("controllers")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-cyan-500">
-              <Cable size={24} />
+            <button className="relative z-10 flex items-center justify-center rounded-full text-cyan-500">
+              <Cable className="h-9 w-9" />
             </button>
             {hoveredIcon === "controllers" && (
-              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-18 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Connections
               </div>
             )}
             {hoveredIcon === "controllers" && (
-              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -334,16 +334,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("online")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
-              <Gamepad2 size={24} className="stroke-primary-foreground" />
+            <button className="relative z-10 flex items-center justify-center rounded-full">
+              <Gamepad2 className="stroke-primary-foreground h-9 w-9" />
             </button>
             {hoveredIcon === "online" && (
-              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-18 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Controllers
               </div>
             )}
             {hoveredIcon === "online" && (
-              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -353,16 +353,19 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("parental")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
-              <Smartphone size={24} className="stroke-primary-foreground" />
+            <button className="relative z-10 flex items-center justify-center rounded-full">
+              <Smartphone
+                size={24}
+                className="stroke-primary-foreground h-9 w-9"
+              />
             </button>
             {hoveredIcon === "parental" && (
-              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-18 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Cartridges
               </div>
             )}
             {hoveredIcon === "parental" && (
-              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -374,17 +377,20 @@ export default function HomePage() {
           >
             <Link
               href="/settings"
-              className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full"
+              className="relative z-10 flex items-center justify-center rounded-full"
             >
-              <Settings size={24} className="stroke-primary-foreground" />
+              <Settings
+                size={24}
+                className="stroke-primary-foreground h-9 w-9"
+              />
             </Link>
             {hoveredIcon === "settings" && (
-              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-18 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 System Settings
               </div>
             )}
             {hoveredIcon === "settings" && (
-              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -394,16 +400,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("power")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
-              <Power size={24} className="stroke-primary-foreground" />
+            <button className="relative z-10 flex items-center justify-center rounded-full">
+              <Power size={24} className="stroke-primary-foreground h-9 w-9" />
             </button>
             {hoveredIcon === "power" && (
-              <div className="text-md bg-opacity-80 absolute -bottom-12 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
+              <div className="text-md bg-opacity-80 absolute -bottom-18 left-1/2 -translate-x-1/2 transform rounded px-2 py-1 whitespace-nowrap text-blue-500">
                 Sleep Mode
               </div>
             )}
             {hoveredIcon === "power" && (
-              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
+              <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
         </div>
