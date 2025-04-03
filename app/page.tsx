@@ -157,15 +157,8 @@ export default function HomePage() {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <div
-              className="flex gap-4 pb-4"
-              style={{ width: "calc(100% + 25%)" }}
-            >
-              <div
-                className="group shadow-m relative aspect-square w-[calc(20%-12px)] flex-none rounded-xl"
-                onMouseEnter={() => setHoveredIcon("game1")}
-                onMouseLeave={() => setHoveredIcon(null)}
-              >
+            <div className="flex w-[calc(100%+25%)] gap-4 pb-4">
+              <div className="group shadow-m relative aspect-square w-[calc(30%-24px)] flex-none rounded-xl lg:w-[calc(20%-12px)]">
                 <Image
                   src={gameCover.src}
                   alt="Mario game"
@@ -176,11 +169,7 @@ export default function HomePage() {
                 />
                 <div className="group-hover:gradient-bg absolute inset-0 top-1/2 left-1/2 z-1 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white"></div>
               </div>
-              <div
-                className="group shadow-m relative aspect-square w-[calc(20%-12px)] flex-none rounded-xl"
-                onMouseEnter={() => setHoveredIcon("game1")}
-                onMouseLeave={() => setHoveredIcon(null)}
-              >
+              <div className="group shadow-m relative aspect-square w-[calc(30%-14px)] flex-none rounded-xl lg:w-[calc(20%-12px)]">
                 <Image
                   src={gameCover2.src}
                   alt="Donkey Kong game"
@@ -191,17 +180,17 @@ export default function HomePage() {
                 />
                 <div className="group-hover:gradient-bg absolute inset-0 top-1/2 left-1/2 z-1 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white"></div>
               </div>
-              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
-              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
-              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
-              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
-              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
+              <div className="bg-primary aspect-square w-[calc(30%-24px)] flex-none rounded-xl border-2 border-white shadow-md lg:w-[calc(20%-12px)]"></div>
+              <div className="bg-primary aspect-square w-[calc(30%-24px)] flex-none rounded-xl border-2 border-white shadow-md lg:w-[calc(20%-12px)]"></div>
+              <div className="bg-primary aspect-square w-[calc(30%-24px)] flex-none rounded-xl border-2 border-white shadow-md lg:w-[calc(20%-12px)]"></div>
+              <div className="bg-primary aspect-square w-[calc(30%-24px)] flex-none rounded-xl border-2 border-white shadow-md lg:w-[calc(20%-12px)]"></div>
+              <div className="bg-primary aspect-square w-[calc(30%-24px)] flex-none rounded-xl border-2 border-white shadow-md lg:w-[calc(20%-12px)]"></div>
             </div>
           </div>
         </div>
         {/* Bottom Navigation */}
 
-        <div className="bg-primary relative flex items-center justify-center gap-10 rounded-full py-4 pr-8 pl-4">
+        <div className="bg-primary relative flex w-full items-center justify-center gap-10 overflow-x-scroll rounded-full py-4 pr-8 pl-4 lg:w-fit">
           {/* Home Button */}
           <div
             className="relative"
