@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Sun } from "lucide-react";
+import { Settings } from "lucide-react";
 import Link from "next/link";
 
 export default function SystemSettings() {
@@ -54,12 +54,12 @@ export default function SystemSettings() {
   }, [selectedResolution, resolutions, showResolutionDropdown]);
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 font-sans">
+    <div className="min-h-screen bg-neutral-100 text-gray-800 font-sans">
       <div className="">
         {/* Header */}
         <div className="sticky top-0 left-0 w-full bg-gray-100 pt-6 px-6 pb-2 z-10 border-b border-gray-200 h-16">
           <div className="flex items-center">
-            <Sun className="h-6 w-6 mr-3 text-gray-600" />
+            <Settings className="h-6 w-6 mr-3 text-gray-600" />
             <h1 className="text-2xl font-normal text-gray-600">
               System Settings
             </h1>

@@ -10,13 +10,15 @@ import {
   Power,
   Gamepad2,
   FileText,
-  Folder,
-  LinkIcon,
   Smartphone,
   BatteryMedium,
   Wifi,
+  Plus,
+  MessageCircleMore,
+  Cable,
 } from "lucide-react";
-
+import gameCover from "@/app/assets/game-cover.jpg";
+import switchOnline from "@/app/assets/switchonline.avif";
 export default function HomePage() {
   const [currentTime, setCurrentTime] = useState(() => {
     const now = new Date();
@@ -76,17 +78,17 @@ export default function HomePage() {
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 font-sans relative overflow-hidden">
+    <div className="min-h-screen bg-neutral-100 text-gray-800 font-sans relative overflow-hidden">
       {/* Status Bar */}
       <div className="absolute top-0 left-0 w-full flex justify-between items-center p-4">
         <div className="flex items-center">
-          <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center overflow-hidden">
+          <div className="w-14 h-14 border-2 border-white rounded-full bg-red-500 flex items-center justify-center overflow-hidden">
             <Image
               src="https://avatars.githubusercontent.com/u/13372238?v=4"
               alt="Profile"
               width={32}
               height={32}
-              className="object-cover"
+              className="object-cover h-full w-full"
             />
           </div>
         </div>
@@ -101,7 +103,7 @@ export default function HomePage() {
 
       {/* Game Grid */}
       <div className="flex flex-col justify-center items-center gap-4 h-screen">
-        <div className="px-4 mt-4">
+        <div className="px-4 mt-4 w-screen">
           <div
             ref={gameGridRef}
             className="overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing"
@@ -114,27 +116,27 @@ export default function HomePage() {
               className="flex gap-4 pb-4"
               style={{ width: "calc(100% + 25%)" }}
             >
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl overflow-hidden shadow-md">
+              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl overflow-hidden shadow-md border-2 border-gray-200/30">
                 <Image
-                  src="/placeholder.svg?height=150&width=150&text=Mario+Kart"
+                  src={gameCover.src}
                   alt="Mario Kart 8 Deluxe"
-                  width={150}
-                  height={150}
-                  className="w-full h-full object-cover"
+                  width={388}
+                  height={388}
+                  className="w-full h-full object-cover "
                 />
               </div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md"></div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md"></div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md"></div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md"></div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md"></div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md"></div>
+              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
+              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
+              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
+              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
+              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
+              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
             </div>
           </div>
         </div>
         {/* Bottom Navigation */}
 
-        <div className="flex p-4 justify-center items-center gap-4 relative bg-white rounded-full">
+        <div className="flex p-4 justify-center items-center gap-4 relative bg-white/50 rounded-full">
           {/* Home Button */}
           <div
             className="relative"
@@ -143,28 +145,14 @@ export default function HomePage() {
           >
             <Link
               href="/"
-              className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white z-10 relative"
+              className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white z-10 relative overflow-hidden"
             >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 6L12 18"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M6 12L18 12"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <Image
+                src={switchOnline.src}
+                alt="Logo Switch Online"
+                width={40}
+                height={40}
+              />
             </Link>
             {hoveredIcon === "home" && (
               <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
@@ -183,11 +171,11 @@ export default function HomePage() {
             onMouseLeave={() => setHoveredIcon(null)}
           >
             <button className="w-8 h-8 rounded-full flex items-center justify-center text-orange-500 z-10 relative">
-              <Folder size={24} />
+              <MessageCircleMore size={24} />
             </button>
             {hoveredIcon === "album" && (
               <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
-                Album
+                Chat
               </div>
             )}
             {hoveredIcon === "album" && (
@@ -262,11 +250,11 @@ export default function HomePage() {
             onMouseLeave={() => setHoveredIcon(null)}
           >
             <button className="w-8 h-8 rounded-full flex items-center justify-center text-cyan-500 z-10 relative">
-              <Gamepad2 size={24} />
+              <Cable size={24} />
             </button>
             {hoveredIcon === "controllers" && (
               <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
-                Controllers
+                Connections
               </div>
             )}
             {hoveredIcon === "controllers" && (
@@ -281,11 +269,11 @@ export default function HomePage() {
             onMouseLeave={() => setHoveredIcon(null)}
           >
             <button className="w-8 h-8 rounded-full flex items-center justify-center text-gray-500 z-10 relative">
-              <LinkIcon size={24} />
+              <Gamepad2 size={24} />
             </button>
             {hoveredIcon === "online" && (
               <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
-                Nintendo Switch Online
+                Controllers
               </div>
             )}
             {hoveredIcon === "online" && (
@@ -304,7 +292,7 @@ export default function HomePage() {
             </button>
             {hoveredIcon === "parental" && (
               <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
-                Parental Controls
+                Cartridges
               </div>
             )}
             {hoveredIcon === "parental" && (
@@ -363,14 +351,14 @@ export default function HomePage() {
       </div>
       <div className="absolute bottom-4 right-4 flex items-center gap-2">
         <div className="flex items-center">
-          <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs">
-            ⊕
+          <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs mr-1">
+            <Plus size={16} />
           </div>
           <span className="text-gray-600 text-sm ml-1">Options</span>
         </div>
         <div className="flex items-center">
-          <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs">
-            ○
+          <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs mr-1">
+            A
           </div>
           <span className="text-gray-600 text-sm ml-1">OK</span>
         </div>
