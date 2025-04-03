@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { Settings } from "lucide-react";
-import Link from "next/link";
+import { useEffect, useState } from "react"
+import Link from "next/link"
+import { Settings } from "lucide-react"
 
 export default function SystemSettings() {
-  const [hdrEnabled, setHdrEnabled] = useState(true);
-  const [showResolutionDropdown, setShowResolutionDropdown] = useState(false);
-  const [selectedResolution, setSelectedResolution] = useState("Automatic");
+  const [hdrEnabled, setHdrEnabled] = useState(true)
+  const [showResolutionDropdown, setShowResolutionDropdown] = useState(false)
+  const [selectedResolution, setSelectedResolution] = useState("Automatic")
 
   const resolutions = [
     "Automatic",
@@ -15,51 +15,51 @@ export default function SystemSettings() {
     "1080p (Full HD)",
     "1440p (WQHD)",
     "2160p (4K)",
-  ];
+  ]
 
   const toggleHDR = () => {
-    setHdrEnabled(!hdrEnabled);
-  };
+    setHdrEnabled(!hdrEnabled)
+  }
 
   const toggleResolutionDropdown = () => {
-    setShowResolutionDropdown(!showResolutionDropdown);
-  };
+    setShowResolutionDropdown(!showResolutionDropdown)
+  }
 
   const selectResolution = (resolution: string) => {
-    setSelectedResolution(resolution);
-    setShowResolutionDropdown(false);
-  };
+    setSelectedResolution(resolution)
+    setShowResolutionDropdown(false)
+  }
 
   // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!showResolutionDropdown) return;
+      if (!showResolutionDropdown) return
 
-      const currentIndex = resolutions.indexOf(selectedResolution);
+      const currentIndex = resolutions.indexOf(selectedResolution)
 
       if (e.key === "ArrowUp" && currentIndex > 0) {
-        setSelectedResolution(resolutions[currentIndex - 1]);
+        setSelectedResolution(resolutions[currentIndex - 1])
       } else if (
         e.key === "ArrowDown" &&
         currentIndex < resolutions.length - 1
       ) {
-        setSelectedResolution(resolutions[currentIndex + 1]);
+        setSelectedResolution(resolutions[currentIndex + 1])
       } else if (e.key === "Escape") {
-        setShowResolutionDropdown(false);
+        setShowResolutionDropdown(false)
       }
-    };
+    }
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedResolution, resolutions, showResolutionDropdown]);
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [selectedResolution, resolutions, showResolutionDropdown])
 
   return (
-    <div className="min-h-screen bg-neutral-100 text-gray-800 font-sans">
+    <div className="min-h-screen bg-neutral-100 font-sans text-gray-800">
       <div className="">
         {/* Header */}
-        <div className="sticky top-0 left-0 w-full bg-gray-100 pt-6 px-6 pb-2 z-10 border-b border-gray-200 h-16">
+        <div className="sticky left-0 top-0 z-10 h-16 w-full border-b border-gray-200 bg-gray-100 px-6 pb-2 pt-6">
           <div className="flex items-center">
-            <Settings className="h-6 w-6 mr-3 text-gray-600" />
+            <Settings className="mr-3 h-6 w-6 text-gray-600" />
             <h1 className="text-2xl font-normal text-gray-600">
               System Settings
             </h1>
@@ -69,26 +69,26 @@ export default function SystemSettings() {
         <div className="flex">
           {/* Left sidebar */}
           <div className="w-[200px]">
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
               Controllers & Accessories
             </div>
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
               Audio
             </div>
-            <div className="py-4 px-6 border-b border-gray-200 text-blue-500 relative">
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500"></div>
+            <div className="relative border-b border-gray-200 px-6 py-4 text-blue-500">
+              <div className="absolute bottom-0 left-0 top-0 w-1 bg-blue-500"></div>
               Display
             </div>
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
               Mii
             </div>
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
               amiibo
             </div>
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
               Themes
             </div>
-            <div className="py-4 px-6 border-b border-gray-200 text-gray-500">
+            <div className="border-b border-gray-200 px-6 py-4 text-gray-500">
               Notifications
             </div>
           </div>
@@ -97,28 +97,28 @@ export default function SystemSettings() {
           <div className="flex-1 border-l border-gray-200 pl-6 pr-6">
             {/* System Screen section */}
             <div className="mb-6">
-              <h2 className="text-lg py-3 font-normal relative pl-4 border-b border-gray-200">
-                <div className="absolute left-0 top-3 bottom-3 w-1 bg-gray-800"></div>
+              <h2 className="relative border-b border-gray-200 py-3 pl-4 text-lg font-normal">
+                <div className="absolute bottom-3 left-0 top-3 w-1 bg-gray-800"></div>
                 System Screen
               </h2>
 
-              <div className="py-4 border-b border-gray-200">
-                <div className="flex justify-between items-center mb-2">
+              <div className="border-b border-gray-200 py-4">
+                <div className="mb-2 flex items-center justify-between">
                   <span className="text-lg">HDR Output</span>
                   <button
                     onClick={toggleHDR}
-                    className={`w-14 h-7 rounded-full ${
+                    className={`h-7 w-14 rounded-full ${
                       hdrEnabled ? "bg-blue-500" : "bg-gray-300"
-                    } p-1 flex items-center transition-colors duration-200`}
+                    } flex items-center p-1 transition-colors duration-200`}
                   >
                     <div
-                      className={`bg-white w-5 h-5 rounded-full shadow-md transform transition-transform duration-200 ${
+                      className={`h-5 w-5 transform rounded-full bg-white shadow-md transition-transform duration-200 ${
                         hdrEnabled ? "translate-x-7" : "translate-x-0"
                       }`}
                     ></div>
                   </button>
                 </div>
-                <p className="text-gray-500 text-sm">
+                <p className="text-sm text-gray-500">
                   Turns on HDR output in supporting software
                 </p>
               </div>
@@ -126,15 +126,15 @@ export default function SystemSettings() {
 
             {/* TV section */}
             <div className="mb-6">
-              <h2 className="text-lg py-3 font-normal relative pl-4 border-b border-gray-200">
-                <div className="absolute left-0 top-3 bottom-3 w-1 bg-gray-800"></div>
+              <h2 className="relative border-b border-gray-200 py-3 pl-4 text-lg font-normal">
+                <div className="absolute bottom-3 left-0 top-3 w-1 bg-gray-800"></div>
                 TV
               </h2>
 
               {/* TV Resolution */}
-              <div className="py-4 border-b border-gray-200 relative">
+              <div className="relative border-b border-gray-200 py-4">
                 <div
-                  className="flex justify-between items-center cursor-pointer"
+                  className="flex cursor-pointer items-center justify-between"
                   onClick={toggleResolutionDropdown}
                 >
                   <span className="text-lg">TV Resolution</span>
@@ -143,11 +143,11 @@ export default function SystemSettings() {
 
                 {/* Resolution dropdown */}
                 {showResolutionDropdown && (
-                  <div className="absolute right-0 top-0 mt-[-80px] bg-white rounded-xl p-3 shadow-lg w-[350px] z-10 overflow-hidden">
+                  <div className="absolute right-0 top-0 z-10 mt-[-80px] w-[350px] overflow-hidden rounded-xl bg-white p-3 shadow-lg">
                     {resolutions.map((resolution) => (
                       <div
                         key={resolution}
-                        className={`relative p-4 flex justify-between items-center cursor-pointer ${
+                        className={`relative flex cursor-pointer items-center justify-between p-4 ${
                           resolution === selectedResolution
                             ? "text-blue-500"
                             : "text-gray-700"
@@ -156,20 +156,20 @@ export default function SystemSettings() {
                       >
                         <span className="text-lg">{resolution}</span>
                         <div
-                          className={`w-6 h-6 rounded-full ${
+                          className={`h-6 w-6 rounded-full ${
                             resolution === selectedResolution
-                              ? "bg-blue-500 flex items-center justify-center"
+                              ? "flex items-center justify-center bg-blue-500"
                               : "border-2 border-gray-300"
                           }`}
                         >
                           {resolution === selectedResolution && (
-                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                            <div className="h-2 w-2 rounded-full bg-white"></div>
                           )}
                         </div>
 
                         {/* Animated gradient border for selected option */}
                         {resolution === selectedResolution && (
-                          <div className="absolute -z-10 gradient-border border-4 w-full rounded-xl overflow-hidden"></div>
+                          <div className="gradient-border absolute -z-10 w-full overflow-hidden rounded-xl border-4"></div>
                         )}
                       </div>
                     ))}
@@ -178,15 +178,15 @@ export default function SystemSettings() {
               </div>
 
               {/* Dock Output Information */}
-              <div className="py-4 border-b border-gray-200">
-                <div className="flex justify-between items-center">
+              <div className="border-b border-gray-200 py-4">
+                <div className="flex items-center justify-between">
                   <span className="text-lg">Dock Output Information</span>
                 </div>
               </div>
 
               {/* RGB Range */}
-              <div className="py-4 border-b border-gray-200">
-                <div className="flex justify-between items-center">
+              <div className="border-b border-gray-200 py-4">
+                <div className="flex items-center justify-between">
                   <span className="text-lg">RGB Range</span>
                 </div>
               </div>
@@ -194,7 +194,7 @@ export default function SystemSettings() {
 
             {/* Adjust Screen Size */}
             <div className="py-4">
-              <div className="flex justify-between items-center">
+              <div className="flex items-center justify-between">
                 <span className="text-lg">Adjust Screen Size</span>
               </div>
             </div>
@@ -202,10 +202,10 @@ export default function SystemSettings() {
         </div>
 
         {/* Footer */}
-        <div className="fixed bottom-0 left-0 w-full flex justify-between p-4 mt-4">
+        <div className="fixed bottom-0 left-0 mt-4 flex w-full justify-between p-4">
           <div className="flex items-center">
             <div className="flex">
-              <div className="w-3 h-6 bg-green-500 mr-1"></div>
+              <div className="mr-1 h-6 w-3 bg-green-500"></div>
               <img
                 src="/placeholder.svg?height=30&width=60"
                 alt="Joy-Con"
@@ -215,13 +215,13 @@ export default function SystemSettings() {
           </div>
           <div className="flex items-center">
             <Link href="/" className="mr-4 flex items-center">
-              <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs mr-1">
+              <div className="mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 text-xs text-white">
                 B
               </div>
               <span className="text-gray-600">Back</span>
             </Link>
             <div className="flex items-center">
-              <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs mr-1">
+              <div className="mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 text-xs text-white">
                 A
               </div>
               <span className="text-gray-600">OK</span>
@@ -230,5 +230,5 @@ export default function SystemSettings() {
         </div>
       </div>
     </div>
-  );
+  )
 }

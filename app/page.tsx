@@ -1,96 +1,131 @@
-"use client";
+"use client"
 
-import { useState, useRef, MouseEvent } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import { MouseEvent, useEffect, useRef, useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
 import {
-  ShoppingBag,
-  ImageIcon,
-  Settings,
-  Power,
-  Gamepad2,
-  FileText,
-  Smartphone,
   BatteryMedium,
-  Wifi,
-  Plus,
-  MessageCircleMore,
   Cable,
-} from "lucide-react";
-import gameCover from "@/app/assets/game-cover.jpg";
-import switchOnline from "@/app/assets/switchonline.avif";
+  FileText,
+  Gamepad2,
+  ImageIcon,
+  MessageCircleMore,
+  Plus,
+  Power,
+  Settings,
+  ShoppingBag,
+  Smartphone,
+  Wifi,
+} from "lucide-react"
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import gameCover from "@/app/assets/game-cover.jpg"
+import switchOnline from "@/app/assets/switchonline.avif"
+
 export default function HomePage() {
   const [currentTime, setCurrentTime] = useState(() => {
-    const now = new Date();
+    const now = new Date()
     return {
       hours: now.getHours(),
       minutes: now.getMinutes(),
       ampm: now.getHours() >= 12 ? "PM" : "AM",
-    };
-  });
+    }
+  })
 
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const gameGridRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
+  const gameGridRef = useRef<HTMLDivElement>(null)
 
   const handleMouseDown = (e: MouseEvent) => {
-    if (!gameGridRef.current) return;
-    setIsDragging(true);
-    setStartX(e.pageX - gameGridRef.current.offsetLeft);
-    setScrollLeft(gameGridRef.current.scrollLeft);
-  };
+    if (!gameGridRef.current) return
+    setIsDragging(true)
+    setStartX(e.pageX - gameGridRef.current.offsetLeft)
+    setScrollLeft(gameGridRef.current.scrollLeft)
+  }
 
   const handleMouseUp = () => {
-    setIsDragging(false);
-  };
+    setIsDragging(false)
+  }
 
   const handleMouseMove = (e: MouseEvent) => {
-    if (!isDragging || !gameGridRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - gameGridRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    gameGridRef.current.scrollLeft = scrollLeft - walk;
-  };
+    if (!isDragging || !gameGridRef.current) return
+    e.preventDefault()
+    const x = e.pageX - gameGridRef.current.offsetLeft
+    const walk = (x - startX) * 2
+    gameGridRef.current.scrollLeft = scrollLeft - walk
+  }
 
   const handleMouseLeave = () => {
-    setIsDragging(false);
-  };
+    setIsDragging(false)
+  }
 
   // Update time every minute
-  useState(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
-      const now = new Date();
+      const now = new Date()
       setCurrentTime({
         hours: now.getHours() > 12 ? now.getHours() - 12 : now.getHours(),
         minutes: now.getMinutes(),
         ampm: now.getHours() >= 12 ? "PM" : "AM",
-      });
-    }, 60000);
+      })
+    }, 60000)
 
-    return () => clearInterval(timer);
-  }, []);
+    return () => clearInterval(timer)
+  }, [])
 
   const formattedTime = `${currentTime.hours}:${currentTime.minutes
     .toString()
-    .padStart(2, "0")}${currentTime.ampm}`;
+    .padStart(2, "0")}${currentTime.ampm}`
 
-  const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
+  const [hoveredIcon, setHoveredIcon] = useState<string | null>(null)
 
   return (
-    <div className="min-h-screen bg-neutral-100 text-gray-800 font-sans relative overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-neutral-100 font-sans text-gray-800">
       {/* Status Bar */}
-      <div className="absolute top-0 left-0 w-full flex justify-between items-center p-4">
+      <div className="absolute left-0 top-0 flex w-full items-center justify-between p-4">
         <div className="flex items-center">
-          <div className="w-14 h-14 border-2 border-white rounded-full bg-red-500 flex items-center justify-center overflow-hidden">
-            <Image
-              src="https://avatars.githubusercontent.com/u/13372238?v=4"
-              alt="Profile"
-              width={32}
-              height={32}
-              className="object-cover h-full w-full"
-            />
-          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Avatar className="h-14 w-14 border-2 border-white">
+                <AvatarImage
+                  src="https://avatars.githubusercontent.com/u/13372238?v=4"
+                  alt="@educalvolpz"
+                />
+                <AvatarFallback>EC</AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem asChild>
+                  <a
+                    href="https://github.com/educlopez/switch2-ui"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Github
+                  </a>
+                  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-sm font-medium">{formattedTime}</span>
@@ -102,11 +137,11 @@ export default function HomePage() {
       </div>
 
       {/* Game Grid */}
-      <div className="flex flex-col justify-center items-center gap-4 h-screen">
-        <div className="px-4 mt-4 w-screen">
+      <div className="flex h-screen flex-col items-center justify-center gap-4">
+        <div className="mt-4 w-screen px-4">
           <div
             ref={gameGridRef}
-            className="overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing"
+            className="hide-scrollbar cursor-grab overflow-x-auto active:cursor-grabbing"
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
@@ -116,27 +151,27 @@ export default function HomePage() {
               className="flex gap-4 pb-4"
               style={{ width: "calc(100% + 25%)" }}
             >
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl overflow-hidden shadow-md border-2 border-gray-200/30">
+              <div className="aspect-square w-[calc(20%-12px)] flex-none overflow-hidden rounded-xl border-2 border-gray-200/30 bg-white shadow-md">
                 <Image
                   src={gameCover.src}
                   alt="Mario Kart 8 Deluxe"
                   width={388}
                   height={388}
-                  className="w-full h-full object-cover "
+                  className="h-full w-full object-cover"
                 />
               </div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
-              <div className="flex-none w-[calc(20%-12px)] aspect-square bg-white rounded-xl shadow-md border-2 border-gray-200/30"></div>
+              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
+              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
+              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
+              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
+              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
+              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
             </div>
           </div>
         </div>
         {/* Bottom Navigation */}
 
-        <div className="flex p-4 justify-center items-center gap-4 relative bg-white/50 rounded-full">
+        <div className="relative flex items-center justify-center gap-4 rounded-full bg-white/50 p-4">
           {/* Home Button */}
           <div
             className="relative"
@@ -145,7 +180,7 @@ export default function HomePage() {
           >
             <Link
               href="/"
-              className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white z-10 relative overflow-hidden"
+              className="relative z-10 flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-red-500 text-white"
             >
               <Image
                 src={switchOnline.src}
@@ -155,12 +190,12 @@ export default function HomePage() {
               />
             </Link>
             {hoveredIcon === "home" && (
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
+              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
                 Home
               </div>
             )}
             {hoveredIcon === "home" && (
-              <div className="absolute inset-0 z-1 rounded-full gradient-border left-1/2 border-4 w-12 h-12 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -170,16 +205,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("album")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="w-8 h-8 rounded-full flex items-center justify-center text-orange-500 z-10 relative">
+            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-orange-500">
               <MessageCircleMore size={24} />
             </button>
             {hoveredIcon === "album" && (
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
+              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
                 Chat
               </div>
             )}
             {hoveredIcon === "album" && (
-              <div className="absolute inset-0 z-1 rounded-full gradient-border left-1/2 border-4 w-12 h-12 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -189,16 +224,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("news")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="w-8 h-8 rounded-full flex items-center justify-center text-green-500 z-10 relative">
+            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-green-500">
               <FileText size={24} />
             </button>
             {hoveredIcon === "news" && (
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
+              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
                 News
               </div>
             )}
             {hoveredIcon === "news" && (
-              <div className="absolute inset-0 z-1 rounded-full gradient-border left-1/2 border-4 w-12 h-12 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -210,17 +245,17 @@ export default function HomePage() {
           >
             <Link
               href="/settings"
-              className="w-8 h-8 rounded-full flex items-center justify-center text-red-500 z-10 relative"
+              className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-red-500"
             >
               <ShoppingBag size={24} />
             </Link>
             {hoveredIcon === "eshop" && (
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
+              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
                 Nintendo eShop
               </div>
             )}
             {hoveredIcon === "eshop" && (
-              <div className="absolute inset-0 z-1 rounded-full gradient-border left-1/2 border-4 w-12 h-12 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -230,16 +265,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("screenshots")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="w-8 h-8 rounded-full flex items-center justify-center text-blue-500 z-10 relative">
+            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-blue-500">
               <ImageIcon size={24} />
             </button>
             {hoveredIcon === "screenshots" && (
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
+              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
                 Screenshots
               </div>
             )}
             {hoveredIcon === "screenshots" && (
-              <div className="absolute inset-0 z-1 rounded-full gradient-border left-1/2 border-4 w-12 h-12 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -249,16 +284,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("controllers")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="w-8 h-8 rounded-full flex items-center justify-center text-cyan-500 z-10 relative">
+            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-cyan-500">
               <Cable size={24} />
             </button>
             {hoveredIcon === "controllers" && (
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
+              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
                 Connections
               </div>
             )}
             {hoveredIcon === "controllers" && (
-              <div className="absolute inset-0 z-1 rounded-full gradient-border left-1/2 border-4 w-12 h-12 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -268,16 +303,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("online")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="w-8 h-8 rounded-full flex items-center justify-center text-gray-500 z-10 relative">
+            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-500">
               <Gamepad2 size={24} />
             </button>
             {hoveredIcon === "online" && (
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
+              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
                 Controllers
               </div>
             )}
             {hoveredIcon === "online" && (
-              <div className="absolute inset-0 z-1 rounded-full gradient-border left-1/2 border-4 w-12 h-12 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -287,16 +322,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("parental")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="w-8 h-8 rounded-full flex items-center justify-center text-gray-500 z-10 relative">
+            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-500">
               <Smartphone size={24} />
             </button>
             {hoveredIcon === "parental" && (
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
+              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
                 Cartridges
               </div>
             )}
             {hoveredIcon === "parental" && (
-              <div className="absolute inset-0 z-1 rounded-full gradient-border left-1/2 border-4 w-12 h-12 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -308,17 +343,17 @@ export default function HomePage() {
           >
             <Link
               href="/settings"
-              className="w-8 h-8 rounded-full flex items-center justify-center text-gray-500 z-10 relative"
+              className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-500"
             >
               <Settings size={24} />
             </Link>
             {hoveredIcon === "settings" && (
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
+              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
                 System Settings
               </div>
             )}
             {hoveredIcon === "settings" && (
-              <div className="absolute inset-0 z-1 rounded-full gradient-border left-1/2 border-4 w-12 h-12 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
 
@@ -328,16 +363,16 @@ export default function HomePage() {
             onMouseEnter={() => setHoveredIcon("power")}
             onMouseLeave={() => setHoveredIcon(null)}
           >
-            <button className="w-8 h-8 rounded-full flex items-center justify-center text-gray-500 z-10 relative">
+            <button className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-500">
               <Power size={24} />
             </button>
             {hoveredIcon === "power" && (
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2  bg-opacity-80 text-blue-500 text-md rounded px-2 py-1 whitespace-nowrap">
+              <div className="text-md absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-opacity-80 px-2 py-1 text-blue-500">
                 Sleep Mode
               </div>
             )}
             {hoveredIcon === "power" && (
-              <div className="absolute inset-0 z-1 rounded-full gradient-border left-1/2 border-4 w-12 h-12 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+              <div className="z-1 gradient-border absolute inset-0 left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border-4"></div>
             )}
           </div>
         </div>
@@ -345,24 +380,24 @@ export default function HomePage() {
       {/* Controller Indicators */}
       <div className="fixed bottom-4 left-4 flex items-center">
         <div className="flex">
-          <div className="w-2 h-6 bg-gray-400 mr-1"></div>
-          <div className="w-6 h-6 rounded-sm bg-gray-400"></div>
+          <div className="mr-1 h-6 w-2 bg-gray-400"></div>
+          <div className="h-6 w-6 rounded-sm bg-gray-400"></div>
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex items-center gap-2">
         <div className="flex items-center">
-          <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs mr-1">
+          <div className="mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 text-xs text-white">
             <Plus size={16} />
           </div>
-          <span className="text-gray-600 text-sm ml-1">Options</span>
+          <span className="ml-1 text-sm text-gray-600">Options</span>
         </div>
         <div className="flex items-center">
-          <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs mr-1">
+          <div className="mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 text-xs text-white">
             A
           </div>
-          <span className="text-gray-600 text-sm ml-1">OK</span>
+          <span className="ml-1 text-sm text-gray-600">OK</span>
         </div>
       </div>
     </div>
-  );
+  )
 }
