@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 
 import { ToggleSwitch } from "@/app/components/ToggleSwitch"
 
@@ -15,12 +16,13 @@ export default function AccessibilitySettings() {
   return (
     <>
       <div className="mb-6">
-        <h2 className="relative mt-8 border-b py-3 pl-4 text-lg font-normal">
-          <div className="absolute top-3 bottom-3 left-0 w-1 bg-gray-800"></div>
-          Button Mapping
-        </h2>
-
-        <div className="flex flex-col gap-2 py-4">
+        <div className="mt-8 flex flex-col gap-2 py-4">
+          <Link
+            href="/settings/accessibility/button-mapping"
+            className="flex flex-row items-center justify-between border-b pb-4 hover:text-blue-500"
+          >
+            <span className="text-lg">Button Mapping</span>
+          </Link>
           <div className="flex flex-row items-center justify-between border-b pb-4">
             <span className="text-lg">Button Mapping in Quick Settings</span>
             <ToggleSwitch
