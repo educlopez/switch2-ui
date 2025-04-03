@@ -160,21 +160,22 @@ export default function HomePage() {
               className="flex gap-4 pb-4"
               style={{ width: "calc(100% + 25%)" }}
             >
-              <div className="aspect-square w-[calc(20%-12px)] flex-none overflow-hidden rounded-xl border-2 border-gray-200/30 bg-white shadow-md">
+              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none overflow-hidden rounded-xl border-2 border-white shadow-md [box-shadow:inset_0px_-1px_1px_rgba(13,34,71,0.12)]">
                 <Image
                   src={gameCover.src}
                   alt="Zelda game"
                   width={388}
                   height={388}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover select-none"
+                  draggable="false"
                 />
               </div>
-              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
-              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
-              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
-              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
-              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
-              <div className="aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-gray-200/30 bg-white shadow-md"></div>
+              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
+              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
+              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
+              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
+              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
+              <div className="bg-primary aspect-square w-[calc(20%-12px)] flex-none rounded-xl border-2 border-white shadow-md"></div>
             </div>
           </div>
         </div>
@@ -196,6 +197,7 @@ export default function HomePage() {
                 alt="Logo Switch Online"
                 width={40}
                 height={40}
+                draggable="false"
               />
             </Link>
             {hoveredIcon === "home" && (
