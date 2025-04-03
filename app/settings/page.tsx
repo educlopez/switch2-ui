@@ -6,6 +6,11 @@ import { Settings } from "lucide-react"
 
 import { Separator } from "@/components/ui/separator"
 
+import { ControlButton } from "../components/ControlButton"
+import { JoyconIndicator } from "../components/JoyconIndicator"
+import { PageHeader } from "../components/PageHeader"
+import { ToggleSwitch } from "../components/ToggleSwitch"
+
 export default function SystemSettings() {
   const [hdrEnabled, setHdrEnabled] = useState(true)
   const [showResolutionDropdown, setShowResolutionDropdown] = useState(false)
@@ -58,15 +63,7 @@ export default function SystemSettings() {
   return (
     <>
       <div className="">
-        {/* Header */}
-        <div className="sticky top-0 left-0 z-10 h-16 w-full border-b bg-neutral-200/80 px-6 pt-6 pb-3">
-          <div className="flex items-center">
-            <Settings className="text-foreground mr-3 h-6 w-6" />
-            <h1 className="text-foreground text-2xl font-normal">
-              System Settings
-            </h1>
-          </div>
-        </div>
+        <PageHeader icon={Settings} title="System Settings" />
 
         <div className="flex">
           {/* Left sidebar */}
@@ -99,18 +96,7 @@ export default function SystemSettings() {
               <div className="flex flex-col gap-2 py-4">
                 <div className="flex flex-row items-center justify-between border-b pb-4">
                   <span className="text-lg">HDR Output</span>
-                  <button
-                    onClick={toggleHDR}
-                    className={`h-7 w-14 rounded-full ${
-                      hdrEnabled ? "bg-blue-500" : "bg-gray-300"
-                    } flex items-center p-1 transition-colors duration-200`}
-                  >
-                    <div
-                      className={`h-5 w-5 transform rounded-full bg-white shadow-md transition-transform duration-200 ${
-                        hdrEnabled ? "translate-x-7" : "translate-x-0"
-                      }`}
-                    ></div>
-                  </button>
+                  <ToggleSwitch enabled={hdrEnabled} onToggle={toggleHDR} />
                 </div>
                 <p className="text-secondary-foreground text-sm">
                   Turns on HDR output in supporting software
@@ -197,29 +183,12 @@ export default function SystemSettings() {
 
         {/* Footer */}
         <div className="fixed bottom-0 left-0 mt-4 flex w-full justify-between p-4">
+          <JoyconIndicator color="bg-green-500" />
           <div className="flex items-center">
-            <div className="flex">
-              <div className="mr-1 h-6 w-3 bg-green-500"></div>
-              <img
-                src="/placeholder.svg?height=30&width=60"
-                alt="Joy-Con"
-                className="h-6"
-              />
-            </div>
-          </div>
-          <div className="flex items-center">
-            <Link href="/" className="mr-4 flex items-center">
-              <div className="mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 text-xs text-white">
-                B
-              </div>
-              <span className="text-gray-600">Back</span>
+            <Link href="/" className="mr-4">
+              <ControlButton button="B" label="Back" />
             </Link>
-            <div className="flex items-center">
-              <div className="mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 text-xs text-white">
-                A
-              </div>
-              <span className="text-gray-600">OK</span>
-            </div>
+            <ControlButton button="A" label="OK" />
           </div>
         </div>
       </div>
