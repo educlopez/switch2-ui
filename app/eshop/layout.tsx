@@ -35,27 +35,28 @@ export default function EshopLayout({
   ]
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="group/sidebar-wrapper flex min-h-svh w-full">
       <div className="fixed top-4 right-4 z-20 flex items-center gap-4">
         <UserAvatar />
       </div>
-      <div className="flex flex-1">
-        <Sidebar
-          items={menuItems}
-          activePath={pathname}
-          width="w-72"
-          header={
-            <div className="flex h-16 items-center justify-between bg-red-600 px-4">
-              <div className="text-2xl font-bold text-white">
-                Nintendo eShop
-              </div>
-            </div>
-          }
-        />
 
-        <div className="flex-1">{children}</div>
-      </div>
-
+      <Sidebar
+        items={menuItems}
+        activePath={pathname}
+        width="w-72"
+        header={
+          <div className="flex h-16 items-center justify-between bg-red-600 px-4">
+            <div className="text-2xl font-bold text-white">Nintendo eShop</div>
+          </div>
+        }
+      />
+      <main className="bg-background relative flex w-full flex-1 flex-col">
+        <div className="relative flex h-screen">
+          <div className="bg-primary h-full w-full flex-col items-center overflow-x-hidden overflow-y-auto">
+            <div className="flex-1">{children}</div>
+          </div>
+        </div>
+      </main>
       <PageFooter
         fixed={true}
         className="bg-background z-30 border-t"

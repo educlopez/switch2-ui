@@ -5,7 +5,7 @@ import { games } from "@/app/data/games"
 
 export default function FeaturedPage() {
   return (
-    <div className="grid h-screen grid-cols-2 gap-6 overflow-y-scroll px-8 py-20">
+    <div className="mt-8 grid w-full gap-4 md:grid-cols-2 md:py-14">
       {games.map((game) => (
         <GameCard
           key={game.id}
