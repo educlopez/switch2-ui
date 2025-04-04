@@ -28,21 +28,23 @@ export default function MediaCarousel({ media }: MediaCarouselProps) {
   return (
     <>
       <div className="relative aspect-video w-full">
-        <div className="relative h-full w-full">
+        <div className="relative overflow-hidden rounded-xl">
           {media[currentSlide].type === "image" ? (
             <Image
               src={media[currentSlide].src}
               alt={`Slide ${currentSlide + 1}`}
-              fill
-              className="object-contain"
+              width={621}
+              height={349}
+              className="h-full w-full object-contain"
             />
           ) : (
-            <div className="relative h-full w-full bg-black">
+            <div className="relative overflow-hidden rounded-xl bg-black">
               <Image
                 src={media[currentSlide].thumbnail!}
                 alt={`Video thumbnail ${currentSlide + 1}`}
-                fill
-                className="object-contain"
+                width={621}
+                height={349}
+                className="h-full w-full object-contain"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <Play className="h-16 w-16 text-white opacity-80" />

@@ -58,7 +58,7 @@ export default function EshopLayout({
 
       <PageFooter
         fixed={true}
-        className="bg-background border-t"
+        className="bg-background z-30 border-t"
         rightContent={
           <>
             <ControlButton button="B" label="Back" href="/" />
