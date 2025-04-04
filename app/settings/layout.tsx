@@ -1,44 +1,61 @@
 "use client"
 
-import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Settings } from "lucide-react"
 
-import { ControlButton } from "../components/ControlButton"
-import { JoyconIndicator } from "../components/JoyconIndicator"
-import { PageHeader } from "../components/PageHeader"
-import { SettingsSidebar } from "../components/SettingsSidebar"
+import { ControlButton } from "@/app/components/ControlButton"
+import { PageFooter } from "@/app/components/PageFooter"
+import { PageHeader } from "@/app/components/PageHeader"
+import { Sidebar } from "@/app/components/Sidebar"
 
-interface SettingsLayoutProps {
+export default function SettingsLayout({
+  children,
+}: {
   children: React.ReactNode
-}
-
-export default function SettingsLayout({ children }: SettingsLayoutProps) {
+}) {
   const pathname = usePathname()
 
+  const menuItems = [
+    // { label: "Screen Brightness", path: "" },
+    // { label: "Bluetooth® Audio", path: "" },
+    // { label: "Internet", path: "" },
+    // { label: "Controllers & Accessories", path: "" },
+    // { label: "Parental Controls", path: "" },
+    { label: "Display", path: "/settings/display" },
+    // { label: "Mii", path: "" },
+    // { label: "amiibo", path: "" },
+    // { label: "Themes", path: "" },
+    { label: "Accessibility", path: "/settings/accessibility" },
+    // { label: "Software Data", path: "" },
+    // { label: "Users", path: "" },
+    // { label: "System", path: "" },
+    // { label: "TV Settings", path: "" },
+    // { label: "Sleep Mode", path: "" },
+    // { label: "Language", path: "" },
+    // { label: "Region", path: "" },
+    // { label: "System Update", path: "" },
+  ]
+
   return (
-    <div className="min-h-screen">
-      {/* Header */}
+    <div className="flex min-h-screen flex-col">
       <PageHeader icon={Settings} title="System Settings" />
 
-      <div className="flex">
-        {/* Sidebar */}
-        <SettingsSidebar activePath={pathname} />
+      <div className="flex flex-1">
+        <Sidebar items={menuItems} activePath={pathname} />
 
-        {/* Main Content */}
-        <div className="flex-1 border-l pr-6 pl-6">{children}</div>
+        <div className="flex-1 px-8">{children}</div>
       </div>
 
-      {/* Footer */}
-      <div className="bg-background text-foreground fixed bottom-0 left-0 mt-4 flex w-full justify-between border-t p-4">
-        <JoyconIndicator color="bg-green-500" />
-        <div className="flex items-center">
-          <Link href="/" className="mr-4">
-            <ControlButton button="B" label="Back" />
-          </Link>
-          <ControlButton button="A" label="OK" />
-        </div>
-      </div>
+      <PageFooter
+        fixed={true}
+        className="bg-background border-t"
+        rightContent={
+          <>
+            <ControlButton button="B" label="Back" href="/" />
+            <ControlButton button="A" label="OK" />
+          </>
+        }
+      />
     </div>
   )
 }

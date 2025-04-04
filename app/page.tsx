@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import {
   BatteryMedium,
   Cable,
@@ -18,15 +17,6 @@ import {
   Wifi,
 } from "lucide-react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu"
 import switchOnline from "@/app/assets/switchonline.avif"
 
 import { Clock } from "./components/Clock"
@@ -34,6 +24,8 @@ import { ControlButton } from "./components/ControlButton"
 import { GameGrid } from "./components/GameGrid"
 import { JoyconIndicator } from "./components/JoyconIndicator"
 import { MenuIcon } from "./components/MenuIcon"
+import { PageFooter } from "./components/PageFooter"
+import { UserAvatar } from "./components/UserAvatar"
 
 export default function HomePage() {
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null)
@@ -71,7 +63,7 @@ export default function HomePage() {
       icon: ShoppingBag,
       label: "Nintendo eShop",
       color: "text-red-500",
-      href: "/settings",
+      href: "/eshop/featured",
     },
     {
       id: "screenshots",
@@ -109,55 +101,11 @@ export default function HomePage() {
   ]
 
   return (
-    <>
+    <div className="">
       {/* Status Bar */}
       <div className="absolute top-0 left-0 flex w-full items-center justify-between p-4">
         <div className="flex items-center">
-          <DropdownMenu>
-            <DropdownMenuTrigger className="relative rounded-full">
-              <Avatar
-                className="h-14 w-14 cursor-pointer border-2 border-white"
-                onMouseEnter={() => setHoveredIcon("avatar")}
-                onMouseLeave={() => setHoveredIcon(null)}
-              >
-                <AvatarImage
-                  src="https://avatars.githubusercontent.com/u/13372238?v=4"
-                  alt="@educalvolpz"
-                  className="z-10"
-                />
-                <AvatarFallback>EC</AvatarFallback>
-              </Avatar>
-              {hoveredIcon === "avatar" && (
-                <div className="gradient-border absolute inset-0 top-1/2 left-1/2 z-1 h-15 w-15 -translate-x-1/2 -translate-y-1/2 rounded-full border-3"></div>
-              )}
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-primary w-56">
-              <DropdownMenuLabel>Links</DropdownMenuLabel>
-              <DropdownMenuSeparator className="bg-border" />
-              <DropdownMenuGroup>
-                <DropdownMenuItem asChild>
-                  <a
-                    href="https://github.com/educlopez/switch2-ui"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:bg-background cursor-pointer"
-                  >
-                    Github
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a
-                    href="https://x.com/educalvolpz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:bg-background cursor-pointer"
-                  >
-                    X.com
-                  </a>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <UserAvatar />
         </div>
         <div className="flex items-center gap-4">
           <Clock />
@@ -206,14 +154,14 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Controller Indicators */}
-      <div className="fixed bottom-4 left-4">
-        <JoyconIndicator />
-      </div>
-      <div className="absolute right-4 bottom-4 flex items-center gap-2">
-        <ControlButton button={<Plus size={16} />} label="Options" />
-        <ControlButton button="A" label="OK" />
-      </div>
-    </>
+      <PageFooter
+        rightContent={
+          <>
+            <ControlButton button={<Plus size={16} />} label="Options" />
+            <ControlButton button="A" label="OK" />
+          </>
+        }
+      />
+    </div>
   )
 }

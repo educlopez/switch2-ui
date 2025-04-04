@@ -1,22 +1,39 @@
 import { ReactNode } from "react"
+import Link from "next/link"
 
-interface ControlButtonProps {
+export interface ControlButtonProps {
+  button: ReactNode
   label: string
-  button: string | ReactNode
-  className?: string
+  href?: string
+  onClick?: () => void
 }
 
 export function ControlButton({
-  label,
   button,
-  className = "",
+  label,
+  href,
+  onClick,
 }: ControlButtonProps) {
-  return (
-    <div className={`flex items-center ${className}`}>
-      <div className="bg-foreground mr-1 flex h-6 w-6 items-center justify-center rounded-full text-xs text-white">
+  const content = (
+    <>
+      <div className="bg-foreground text-primary flex h-8 w-8 items-center justify-center rounded-full">
         {button}
       </div>
-      <span className="text-foreground ml-1 text-sm">{label}</span>
-    </div>
+      <span className="text-sm">{label}</span>
+    </>
+  )
+
+  if (href) {
+    return (
+      <Link href={href} className="flex items-center gap-2">
+        {content}
+      </Link>
+    )
+  }
+
+  return (
+    <button onClick={onClick} className="flex items-center gap-2">
+      {content}
+    </button>
   )
 }
