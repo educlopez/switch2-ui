@@ -119,7 +119,7 @@ export default function HomePage() {
         <GameGrid />
 
         {/* Bottom Navigation */}
-        <div className="bg-primary relative flex w-full items-center justify-center gap-10 overflow-x-scroll rounded-full py-4 pr-8 pl-4 lg:w-fit">
+        <div className="bg-primary relative flex w-full items-center justify-center gap-10 overflow-x-scroll rounded-full py-4 pr-8 pl-4 lg:w-fit xl:overflow-x-visible">
           {menuItems.map((item) =>
             item.component ? (
               <div
